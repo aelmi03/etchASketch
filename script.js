@@ -1,27 +1,23 @@
 const swiper = document.querySelector(`input[type = "range"]`);
 const swiperLabel = document.querySelector(`label[for = "swipe"]`);
 const drawingBox = document.querySelector(".container");
-changePixelDensity(swiper);
+const colorPicker = document.querySelector("#color");
+const clearButton = document.querySelector("#clear");
+changePixelDensity();
 swiper.addEventListener("input", changePixelDensity);
-swiperLabel.textContent = `Pixel Density ${swiper.value} X ${swiper.value}`
+clearButton.addEventListener("click", resetDrawing);
+swiperLabel.textContent = `Pixel Density: ${swiper.value} X ${swiper.value}`
 console.log(amountOfDivsNeeded());
 console.dir(swiper);
 function changePixelDensity(e){
     changeSwiperText();
-    removePreviousDivs()
-    const amountOfDivs = amountOfDivsNeeded();
-    const divSizes = getSize();
-    console.log("hello");
-    for(let i = 0; i < amountOfDivs ; i++){
-        const newDiv = document.createElement("div");
-        newDiv.style.cssText = `width: ${divSizes}; height: ${divSizes}; background-color:red;`
-        drawingBox.appendChild(newDiv);
-    }
-
+    removePreviousDivs();
+    addnewDivs();
+    addListeners();
 }
 
 function changeSwiperText(){
-    swiperLabel.textContent = `Pixel Density ${swiper.value} X ${swiper.value}`
+    swiperLabel.textContent = `Pixel Density: ${swiper.value} X ${swiper.value}`
 }
 
 function getSize(){
@@ -29,11 +25,34 @@ function getSize(){
 }
 
 function amountOfDivsNeeded(){
-    return drawingBox.clientWidth / getSize();
+    return (drawingBox.clientWidth / getSize()) *  (drawingBox.clientWidth / getSize());
 }
 
 function removePreviousDivs(){
-    for(let i = drawingBox.childNodes.length; i >= 0; i--){
-        drawingBox.removeChild(drawingBox.childNodes[i]);
+    drawingBox.textContent = "";
+}
+function addnewDivs(){
+    const amountOfDivs = amountOfDivsNeeded();
+    const divSizes = getSize();
+    for(let i = 0; i < amountOfDivs; i++){
+        const newDiv = document.createElement("div");
+        newDiv.style.cssText = `width: ${divSizes}px; height: ${divSizes}px;`
+        drawingBox.appendChild(newDiv);
+    }
+}
+function addListeners(){
+    const allDivs = drawingBox.childNodes;
+    allDivs.forEach(childDiv => {
+        childDiv.addEventListener("mouseover", eventListenerDetails);
+    })
+}
+function eventListenerDetails(e){
+    e.target.style.backgroundColor = colorPicker.value;
+}
+function resetDrawing(){
+    const childrenNodes = drawingBox.childNodes;
+    for(let i = 0; i < drawingBox.childNodes.length; i++){
+        childrenNodes[i].style.backgroundColor = "white";
+
     }
 }

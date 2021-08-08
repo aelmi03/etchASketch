@@ -1,14 +1,12 @@
 const swiper = document.querySelector(`input[type = "range"]`);
 const swiperLabel = document.querySelector(`label[for = "swipe"]`);
-const drawingBox = document.querySelector(".container");
+const drawingBox = document.querySelector(".container")
 const colorPicker = document.querySelector("#color");
 const clearButton = document.querySelector("#clear");
-changePixelDensity();
 swiper.addEventListener("input", changePixelDensity);
 clearButton.addEventListener("click", resetDrawing);
 swiperLabel.textContent = `Pixel Density: ${swiper.value} X ${swiper.value}`
-console.log(amountOfDivsNeeded());
-console.dir(swiper);
+changePixelDensity();
 function changePixelDensity(e){
     changeSwiperText();
     removePreviousDivs();

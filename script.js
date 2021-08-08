@@ -6,7 +6,6 @@ const clearButton = document.querySelector("#clear");
 swiper.addEventListener("input", changePixelDensity);
 clearButton.addEventListener("click", resetDrawing);
 swiperLabel.textContent = `Pixel Density: ${swiper.value} X ${swiper.value}`;
-console.log(swiper.value);
 window.addEventListener("load", changePixelDensity, {once: true});
 function changePixelDensity(e){
     changeSwiperText();
@@ -20,13 +19,11 @@ function changeSwiperText(){
 }
 
 function getSize(){
-    console.log("Size" + drawingBox.clientWidth/swiper.value);
-    console.log("Client Width" + drawingBox.clientWidth);
+    
     return drawingBox.clientWidth / swiper.value;
 }
 
 function amountOfDivsNeeded(){
-    console.log( (drawingBox.clientWidth / getSize()) *  (drawingBox.clientWidth / getSize()));
     return (drawingBox.clientWidth / getSize()) *  (drawingBox.clientWidth / getSize());
 }
 

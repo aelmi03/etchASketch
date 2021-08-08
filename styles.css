@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Permanent+Marker&display=swap');
 header{
     background-image: linear-gradient(190deg, blue,pink);
     height: 10vh;
@@ -7,8 +8,10 @@ header{
 }
 
 h1{
-    font-size: 3.5em;
-    font-style: italic;
+    font-size: 3.8em;
+    color:white;
+    font-family: "Permanent Marker";
+    text-shadow: 2px 2px 2px blue;
 }
 
 .container{
@@ -29,7 +32,8 @@ h1{
     height:50px;
     align-items: center;
     justify-content: space-around;
-    border:solid rgb(9, 161, 34) 1px;
+    background-image: linear-gradient(180deg,rgb(100, 100, 199),rgb(219, 156, 156));
+    border:solid rgb(177, 124, 236) 1px;
     border-radius: 5px;
 }
 
@@ -41,26 +45,37 @@ h1{
     font-size:1.1em;
     color:white;
     font-style: italic;
+    font-family: "Permanent Marker";
     font-weight: bold;
 }
 body{
     background-color: rgb(233, 243, 233);
+    background-image: linear-gradient(100deg,rgb(113, 198, 219),rgb(239, 242, 243));
 }
 
 .colorPicker input{
     background-color: transparent;
     border: none;
-    background-color: white;
     border: solid black 2px;
     border-radius: 5px;
+    background-image: linear-gradient(180deg,rgb(100, 100, 199),rgb(238, 227, 227));
 }
 
 .swiper label{
     font-size: 1.1em;
     font-weight: bold;
+    font-family: "Permanent Marker";
 }
 
 .colorPicker label{
     font-size:1.1em;
+    font-family: "Permanent Marker";
     font-weight: bold;
+}
+
+a {
+    position:absolute;
+    width:65px;
+    top:7.5px;
+    right:5px;
 }

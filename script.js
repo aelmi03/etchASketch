@@ -21,6 +21,7 @@ function changeSwiperText(){
 
 function getSize(){
     console.log("Size" + drawingBox.clientWidth/swiper.value);
+    console.log("Client Width" + drawingBox.clientWidth);
     return drawingBox.clientWidth / swiper.value;
 }
 

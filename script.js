@@ -7,7 +7,7 @@ swiper.addEventListener("input", changePixelDensity);
 clearButton.addEventListener("click", resetDrawing);
 swiperLabel.textContent = `Pixel Density: ${swiper.value} X ${swiper.value}`;
 console.log(swiper.value);
-changePixelDensity();
+window.addEventListener("load", changePixelDensity, {once: true});
 function changePixelDensity(e){
     changeSwiperText();
     removePreviousDivs();

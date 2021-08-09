@@ -3,6 +3,10 @@ const swiperLabel = document.querySelector(`label[for = "swipe"]`);
 const drawingBox = document.querySelector(".container")
 const colorPicker = document.querySelector("#color");
 const clearButton = document.querySelector("#clear");
+const rainbowButton = document.querySelector("#rainbow");
+console.log(getRandomColour());
+let rainbowClickedOn = false;
+rainbowButton.addEventListener("click", rainbowModeOn);
 swiper.addEventListener("input", changePixelDensity);
 clearButton.addEventListener("click", resetDrawing);
 swiperLabel.textContent = `Pixel Density: ${swiper.value} X ${swiper.value}`;
@@ -46,7 +50,12 @@ function addListeners(){
     })
 }
 function eventListenerDetails(e){
+    if(rainbowClickedOn){
+        e.target.style.backgroundColor = getRandomColour();
+    }
+    else{
     e.target.style.backgroundColor = colorPicker.value;
+    }
 }
 function resetDrawing(){
     const childrenNodes = drawingBox.childNodes;
@@ -54,4 +63,29 @@ function resetDrawing(){
         childrenNodes[i].style.backgroundColor = "white";
 
     }
+}
+function rainbowModeOn(){
+    if(rainbowClickedOn){
+        rainbowClickedOn = false;
+    }
+    else{
+        rainbowClickedOn = true;
+    }
+    console.log(rainbowClickedOn);
+    if(rainbowClickedOn){
+        rainbowButton.style.cssText = "border:solid 2px gold"
+    }
+    else{
+        rainbowButton.style.cssText = "";
+    }
+
+
+}
+function getRandomColour(){
+    const hexadecimal = "123456789ABCDEF";
+    let colour = "#";
+    for(let i = 0; i < 6; i++){
+        colour = colour + hexadecimal.charAt(Math.floor(Math.random() * 15));   
+    }
+    return colour;
 }
